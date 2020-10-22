@@ -15,6 +15,16 @@ let createEmployeeRecords = function (dataSet) {
         return createEmployeeRecord(data)
     })
 }
+
+let createTimeInEvent = function (timeStamp) {
+    let [date, hour] = timeStamp.split(' ')
+    this.timeInEvents.push({
+        type: "TimeIn",
+        hour: parseInt(hour, 10),
+        date: date
+    })
+    return this
+}
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
