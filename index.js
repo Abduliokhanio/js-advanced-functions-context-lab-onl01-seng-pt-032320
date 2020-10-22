@@ -58,15 +58,26 @@ let wagesEarnedOnDate = function (workDate) {
  As a result, the lessons for this function will pass *and* it will be available
  for you to use if you need it!
  */
-
-let allWagesFor = function () {
-    let eligibleDates = this.timeInEvents.map(function (e) {
-        return e.date
-    })
-
-    let payable = eligibleDates.reduce(function (memo, d) {
-        return memo + wagesEarnedOnDate.call(this, d)
-    }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
-
-    return payable
-}
+ let allWagesFor = function () {
+     let eligibleDates = this.timeInEvents.map(function (e) {
+         return e.date
+     })
+ 
+     let payable = eligibleDates.reduce(function (memo, d) {
+         return memo + wagesEarnedOnDate.call(this, d)
+     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
+ 
+     return payable
+ }
+ 
+ let calculatePayroll = function (employees) {
+     return employees.reduce(function(amount, record) {
+         return amount + allWagesFor.call(record)
+     }, 0)
+ }
+ 
+ let findEmployeeByFirstName = function (collection, firstNameString) {
+     return collection.find(function(name) {
+         return name.firstName === firstNameString
+     })
+ }
