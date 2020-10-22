@@ -36,6 +36,20 @@ let createTimeOutEvent = function (timeStamp) {
     return this
 }
 
+let hoursWorkedOnDate = function (workDate) {
+    let timeIn = this.timeInEvents.find(function(day) {
+        return day.date === workDate
+    })
+    let timeOut = this.timeOutEvents.find(function(day) {
+        return day.date === workDate 
+    })
+    return (timeOut.hour - timeIn.hour) / 100
+}
+
+let wagesEarnedOnDate = function (workDate) {
+    let earnings = hoursWorkedOnDate.call(this, workDate) * this.payPerHour
+    return parseFloat(earnings.toString())
+}
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
