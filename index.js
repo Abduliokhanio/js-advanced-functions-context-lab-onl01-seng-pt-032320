@@ -1,6 +1,13 @@
 /* Your Code Here */
 function createEmployeeRecord(){
-
+  return {
+      firstName: data[0],
+      familyName: data[1],
+      title: data[2],
+      payPerHour: data[3],
+      timeInEvents: [],
+      timeOutEvents: [],
+  }
 }
 /*
  We're giving you this function. Take a look at it, you might see some usage
